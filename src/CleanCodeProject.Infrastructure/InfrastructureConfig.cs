@@ -1,5 +1,7 @@
+using CleanCodeProject.Application.Notifications;
 using CleanCodeProject.Domain.Common;
 using CleanCodeProject.Domain.IRepositories;
+using CleanCodeProject.Infrastructure.Notifications;
 using CleanCodeProject.Infrastructure.Persistence;
 using CleanCodeProject.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +28,9 @@ public static class InfrastructureConfig
         // Register UnitOfWork
         services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+        // Register services
+        services.AddScoped<INotificationService, IEmailSenderService>();
+        
         return services;
     }
 }
